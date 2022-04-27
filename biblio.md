@@ -16,12 +16,16 @@ src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/13484
 
 ### Más avanzada
 <p>
-<a href="https://www.goodreads.com/book/show/1131921.Time_Series_Analysis?ac=1&from_search=true&qid=Q7KupmhcM2&rank=1">
+<a href="https://www.goodreads.com/book/show/1131921.Time_Series_Analysis">
 <img border="0" title="Time Series Analysis, Hamilton" 
 src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1347802271l/1131921.jpg" width="86" height="133.3">
 </a>
-<a href="https://www.goodreads.com/book/show/83280.Econometric_Analysis?ac=1&from_search=true&qid=GNP7ov1IYR&rank=1">
+<a href="https://www.goodreads.com/book/show/83280.Econometric_Analysis">
 <img border="0" title="Econometric Analysis, Green" 
 src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1386924179l/83280.jpg" width="86" height="133.3">
+</a>
+<a href="https://www.goodreads.com/book/show/4688640-new-introduction-to-multiple-time-series-analysis">
+<img border="0" title="New Introduction to Multiple Time Series Analysis, Lütkepohl" 
+src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1347606885l/4688640.jpg" width="86" height="133.3">
 </a>
 </p>
