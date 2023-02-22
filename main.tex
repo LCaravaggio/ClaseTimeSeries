@@ -1,0 +1,225 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+\usepackage{amsmath} 
+\usepackage{ragged2e} 
+\usepackage{hyperref}
+
+\title{Introducción a Series de Tiempo}
+\author{Leonardo A. Caravaggio}
+\date{ITBA - 2023}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+\frametitle{¿Qué es una serie de tiempo?}
+
+\justify
+Una serie de tiempo es un conjunto de datos indexado en el tiempo.\\
+\vspace{5mm} %5mm vertical space
+Constituyen la principal fuente de información utilizada en la estimación de Modelos Econométricos. 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Componentes}
+
+\justify
+La relación entre estas variables puede escribirse de la siguiente manera: \\
+\vspace{5mm} %5mm vertical space
+\begin{center}
+Observación=Componente sistémica o determinística + Perturbación aleatoria \\
+\end{center}
+\vspace{5mm} %5mm vertical space
+Es decir: 
+\[
+y_t=x_{kt}+u_t
+\]
+donde $u_t$ representa un término de error, es decir, una diferencia aleatoria entre las variables. 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Componentes}
+
+\justify
+El procesamiento tradicional para la modelización de las series de tiempo consiste en la descomposición, sea en forma aditiva o multiplicativa, de sus componentes elementales: Tendencia (T), Variación Estacional (S), Variación Cíclica (C) y componente aleatoria (e). Si se adopta el esquema aditivo, la representación sería: 
+\[
+Y_t=T_t+S_t+C_t+e_t
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Estacionariedad}
+\justify
+No confundir \textbf{estacionariedad} con estacionalidad\\
+\vspace{5mm} %5mm vertical space
+Un proceso estocástico es \textbf{estacionario en sentido estricto} si todas las variables aleatorias que componen el proceso están idénticamente distribuidas, independientemente del momento del tiempo en que se estudie el proceso.\\
+\vspace{5mm} %5mm vertical space
+La \textbf{estacionariedad fuerte} es de difícil constatación empírica, por lo que en general se utiliza el criterio de estacionariedad débil. Se dice que un proceso es débilmente estacionario si se verifican simultáneamente las condiciones de estacionariedad en media y en varianza.
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Autocorrelación}
+\justify
+La \textbf{función de autocorrelación} (FAS) y la \textbf{función de autocorrelación parcial} (FAP) son medidas de asociación entre valores de series actuales y pasadas e indican cuáles son los valores más útiles para predecir valores futuros.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Test de Estacionariedad}
+\justify
+El test más conocido para chequear si una serie es no estacionaria (es decir, si tiene raíz unitaria) es el \href{https://en.wikipedia.org/wiki/Augmented_Dickey-Fuller_test}{Test de Dicky Fuller aumentado}.\\
+
+\vspace{5mm} %5mm vertical space
+Existen alternativas, como por ejemplo el test de Phillips–Perron (PP) o el test de ADF-GLS. 
+\end{frame}
+
+\begin{frame}
+\frametitle{Dicky Fuller}
+\justify
+Se trata de un test de hipótesis dónde: \\
+\centering
+H0: Existe raíz unitaria (no es estacionario) \\
+H1: No existe raíz unitaria (es estacionario) \\
+\justify
+Es decir que si el p-valor es menor al umbral seleccionado, podemos quedarnos tranquilos que la serie es no estacionaria. \\
+\vspace{3mm} %3mm vertical space
+\includegraphics[scale=0.3]{image1}
+\centering
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Análisis Econométrico de las Series de Tiempo}
+\justify
+La mayoría de las series empíricas pertenecientes al ámbito de la economía tienen un comportamiento \textbf{no estacionario}.\\
+\vspace{5mm} %5mm vertical space
+Esto quiere decir, que para evitar modelizar una correlación espuria, será necesario tornarlos estacionarios. Esto puede hacerse calculando el operador diferencia, aplicando una escala logarítmica, una escala inversa, etc. 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Modelo sencillo}
+\justify
+Podemos pensar un modelo sencillo se estimación del EMAE en base a dos estimadores adelantados de la actividad, el IPI y el ISAC.\\
+\vspace{5mm} %5mm vertical space
+\[
+EMAE_t=\beta_0+\beta_1IPI_t+\beta_2ISAC_t+u_t
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Modelo AR}
+\justify
+Es un modelo que explica el comportamiento de una variable por sus rezagos AR(p): \\
+\vspace{5mm} %5mm vertical space
+\[
+{\displaystyle Y_{t}=+\phi _{0}+\sum _{i=1}^{p}\phi _{i}Y_{t-i}+\varepsilon _{t}}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Modelo MA}
+\justify
+Es un modelo que explica el comportamiento de una variable por sus medias móviles. Un modelo MA(q): \\
+\vspace{5mm} %5mm vertical space
+\[
+{\displaystyle Y_{t}=\mu +\sum _{i=1}^{q}\theta _{i}\varepsilon _{t-i}+\varepsilon _{t}}
+\]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Modelo ARIMA}
+\justify
+Es un modelo que combina una parte autoregresiva, una integración y una parte de medias móviles. Un modelo ARIMA(p,d,q): \\
+\vspace{5mm} %5mm vertical space
+\[
+{\displaystyle Y_{t}=-(\Delta ^{d}Y_{t}-Y_{t})+\phi _{0}+\sum _{i=1}^{p}\phi _{i}\Delta ^{d}Y_{t-i}-\sum _{i=1}^{q}\theta _{i}\varepsilon _{t-i}+\varepsilon _{t}}
+\]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Modelos VAR}
+Un problema del modelo planteado anteriormente es que le imponen una dirección de causalidad a las variables.\\ 
+\vspace{5mm} %5mm vertical space
+Para evitar esto, cuando dos series de tiempo están interrelacionadas, se puede usar un modelo de Vectores Autoregresivos (VAR).\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Modelos VAR}
+El nombre del modelo es bastante intuitivo respecto de su estructura. Se trata de un modelo autoregresivo, pero multivariado, permitiendo así la interacción entre las variables y los rezagos de las mismas.\\ 
+\vspace{5mm} %5mm vertical space
+\[
+Y_{1t}=\alpha_1+\beta_{11}Y_{1,t-1}+\beta_{12}Y_{2,t-1}+u_1t
+\]
+\[
+Y_{2t}=\alpha_2+\beta_{21}Y_{1,t-1}+\beta_{22}Y_{2,t-1}+u_2t
+\]
+\\
+\vspace{5mm} %5mm vertical space
+Este sería un modelo VAR(1) porque cada variable tiene un rezago. 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Test de Granger}
+Para identificar si una serie adelanta en información a la otra puede realizarse un test de Granger
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Test de Durbin Watson}
+Finalmente para chequear que no quede ninguna relación no identificada entre las series corresponderá chequear que no existan relaciones lineales entre los residuos. Esto puede hacerse con un test de Durbin Watson 
+\end{frame}
+
+\begin{frame}
+\frametitle{Modelos PVAR}
+Otra extensión posible es armar un modelo VAR para datos de Panel. De esta manera se identifican las interacciones promedio, pero teniendo en cuenta las caracteristicas propias de cada panel. \\
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Cointegración}
+Dos series están cointegradas si existe una combinación lineal que sea estacionaria.\\
+\vspace{5mm} %5mm vertical space
+¡Esto puede suceder aunque las dos series sean no estacionarias! 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Test de Johanson}
+Si los residuos del modelo son estacionarios, esto quiere decir que las series están cointegradas. Esto se conoce como Método de dos pasos de Engle-Granger.  \\
+\vspace{5mm} %5mm vertical space
+Otra manera de chequear si dos series están cointegradas es realizar el test de Johanson. 
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{ECM}
+Diferenciar las series es muy útil para predecir comportamientos en el corto plazo, pero para formalizar relaciones de largo plazo es necesario utilizar las series en nivel.\\
+\vspace{5mm} %5mm vertical space
+Para lograr esto se desarrolló la metodología de la corrección de error (ECM).  
+\end{frame}
+
+\begin{frame}
+\frametitle{Práctica Modelos ECM}
+Veamos la implementación de estos modelos en Python. \\
+\vspace{5mm} %5mm vertical space
+Ver ejercicio 4 del repositorio.\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Modelos VEC}
+También sería posible incorporar las ventajas de los modelos de vectores al modelo de corrección de errores, de manera de evitar la imposición de un sentido de causalidad. Este tipo de modelos se llama VEC (Corrección de errores vectorial). 
+\end{frame}
+
+
+\end{document}
